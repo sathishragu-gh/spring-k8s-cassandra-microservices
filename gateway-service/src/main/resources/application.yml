@@ -7,18 +7,17 @@ management:
     web:
       exposure:
         include: '*'
----
-spring.profiles: kubernetes
-spring.cloud.kubernetes.enabled: true
-spring.cloud.kubernetes.config.enabled: true
-spring.cloud.kubernetes.reload.enabled: true
-spring.cloud.kubernetes.reload.mode: event
-spring.cloud.kubernetes.reload.strategy: refresh
-kubernetes.trust.certificates: true
-management.endpoint.restart.enabled: true
 
-
-
-
-
-
+# Local routes — point directly to services running on localhost
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: products_route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/products/**
+        - id: orders_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/orders/**

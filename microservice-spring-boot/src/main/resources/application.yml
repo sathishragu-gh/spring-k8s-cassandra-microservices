@@ -7,17 +7,15 @@ management:
   server:
     port: 8084
 
+# Local Cassandra defaults — override with env vars DB_USERNAME / DB_PASSWORD if needed
+cassandra.contact-points: localhost
+cassandra.keyspace: betterbotz
+cassandra.local-datacenter: datacenter1
+cassandra.port: 9042
+
 ---
 spring.profiles: docker
 cassandra.contact-points: host.docker.internal
 cassandra.keyspace: betterbotz
 cassandra.local-datacenter: dc1
 cassandra.port: 9042
----
-spring.profiles: kubernetes
-spring.cloud.kubernetes.enabled: true
-spring.cloud.kubernetes.config.enabled: true
-spring.cloud.kubernetes.config.sources.namespace: spring-boot-service
-spring.cloud.kubernetes.reload.enabled: true
-spring.cloud.kubernetes.reload.mode: event
-kubernetes.trust.certificates: true

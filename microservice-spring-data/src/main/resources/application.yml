@@ -5,7 +5,17 @@ server.port: 8081
 management.server.port: 8082
 
 spring.data.rest.basePath: /api
-spring.data.cassandra.keyspace-name: betterbotz
+
+# Local Cassandra defaults
+spring:
+  data:
+    cassandra:
+      keyspace-name: betterbotz
+      contact-points: localhost
+      port: 9042
+      local-datacenter: datacenter1
+      schema-action: create-if-not-exists
+
 ---
 spring.profiles: docker
 spring:
@@ -15,14 +25,3 @@ spring:
       contact-points: host.docker.internal
       local-datacenter: dc1
       schema-action: create-if-not-exists
----
-spring.profiles: kubernetes
-spring.cloud.kubernetes.enabled: true
-spring.cloud.kubernetes.config.enabled: true
-spring.cloud.kubernetes.config.sources.namespace: spring-data-service
-spring.cloud.kubernetes.reload.enabled: true
-spring.cloud.kubernetes.reload.mode: event
-spring.cloud.kubernetes.reload.strategy: refresh
-kubernetes.trust.certificates: true
-management.endpoint.restart.enabled: true
-     

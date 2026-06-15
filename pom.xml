@@ -20,7 +20,9 @@
 
 		<!-- Core -->
 		<java.version>11</java.version>
-		<maven-plugin-compiler.version>3.8.1</maven-plugin-compiler.version>
+		<maven-plugin-compiler.version>3.11.0</maven-plugin-compiler.version>
+		<!-- Override Spring Boot 2.3.0 managed Lombok (1.18.12) — incompatible with Java 17 -->
+		<lombok.version>1.18.30</lombok.version>
 		<maven-plugin-dockerfile.version>1.4.13</maven-plugin-dockerfile.version>
 
 		<!-- Spring -->
